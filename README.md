@@ -1,2 +1,2 @@
-# conways_game_of_life.rs
+# conways-rs
 a command line conway's game of life written in rust
