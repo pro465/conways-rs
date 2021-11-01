@@ -44,6 +44,7 @@ fn main() {
         let mut keys = std::io::stdin().keys();
         let mut x: usize = 0;
         let mut y: usize = 0;
+        let mut output = Output::new();
 
         loop {
             let k = keys.next().unwrap().unwrap();
@@ -106,8 +107,6 @@ fn main() {
 
                 let lock = cells_clone.lock().unwrap();
 
-                let mut output = Output::new();
-
                 for i in 0..w * h {
                     let y = i / w;
 
@@ -132,6 +131,8 @@ fn main() {
         }
     });
 
+    let mut output = Output::new();
+
     'outer: loop {
         let start = Instant::now();
 
@@ -142,8 +143,6 @@ fn main() {
         let cloned = cells.lock().unwrap().clone();
 
         if !not_started.load(Ordering::SeqCst) {
-            let mut output = Output::new();
-
             for i in 0..w * h {
                 let y = i / w;
 

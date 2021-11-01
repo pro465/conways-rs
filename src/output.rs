@@ -7,9 +7,11 @@ impl Output {
         Self(Vec::new())
     }
 
-    pub fn flush_to(self, stdout: &mut impl Write) {
+    pub fn flush_to(&mut self, stdout: &mut impl Write) {
         stdout.write_all(&self.0).unwrap();
         stdout.flush().unwrap();
+
+        self.0.clear();
     }
 }
 
